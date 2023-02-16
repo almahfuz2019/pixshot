@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch';
 import Loading from './Loading';
 const ImageDetails = () => {
-  // const [newProducts,setNewProducts]=useState([])
+  const [newProducts,setNewProducts]=useState([])
      const [singlePhoto,setSinglePhoto]=useState({})
      const { id } = useParams();
      const[productLoading,setProductLoading]=useState(true);
@@ -16,33 +16,37 @@ const ImageDetails = () => {
                  .then(data =>{
                     setSinglePhoto(data)
                    setProductLoading(false)
+                   fatchcategory(singlePhoto.category)
                   });
-         },[id]);
+         },[id,singlePhoto.category]);
          async function  dawnloadImage(a){
           const image = await fetch(a)
           const imageBlog = await image.blob();
           const imageURL = URL.createObjectURL(imageBlog);
           const link = document.createElement('a')
           link.href = imageURL
-          link.download = 'image file name here'
+          link.download = 'pixshot'
           document.body.appendChild(link)
           link.click()
           document.body.removeChild(link)
        }
-      //  const fatchcategory=()=>{
-      //   setProductLoading(true)
-      //   const url= `http://localhost:5000/photosearchbycategorywithlimit?category=cow`;
-      // // console.log(data);
-      //   console.log(url);
-      //   fetch(url)
-      //   .then(res=>res.json())
-      //   .then(data=>{
-      //     console.log(data);
-      //     setNewProducts(data)})
-      //     setProductLoading(false)
-        
-      // }
-      // fatchcategory()
+       const fatchcategory=(a)=>{
+        setProductLoading(true)
+        const url= `http://localhost:5000/photosearchbycategorywithlimit?category=${a}`;
+      // console.log(data);
+      console.log(url);
+      fetch(url)
+      .then(res=>res.json())
+      .then(data=>{
+        console.log(data);
+        setNewProducts(data)
+      })
+      
+      setProductLoading(false)
+      }
+      // useEffect(()=>{
+      //   fatchcategory(singlePhoto.category)
+      // },[id])
   
      if(productLoading){
       return <Loading/>
@@ -232,7 +236,35 @@ const ImageDetails = () => {
     </div>
   </div>
 </section>
+<div className='grid grid-cols-1 lg:grid-cols-4 gap-4 '>
+               {newProducts.map((photo )=>{
+						return(
+						<>
+					
+                           <div className=''>
+                           <div class="relative block group ">
+                            <Link to={`/photo/${photo._id}`} className="cursor-pointer">
+  <img data-sizes="auto"
+    data-src={photo.photoLink}
+    alt=""
+    class=" lazyload blur-up w-full object-cover transition duration-500 group-hover:opacity-90 h-60 border border-secondary rounded-sm"
+    />
+  <div class="absolute inset-0 flex  items-end shadow-black justify-between p-6 z-20">
+    <h3 class="text-xl font-bold text-secondary w-full   ">Human</h3>
+    <span onClick={()=>dawnloadImage(photo.photoLink)}
+      class="inline-block p-2 rounded-md mt-3 text-xs  tracking-wide uppercase bg-gray-100 border border-secondary"
+      >
+     <HiOutlineDownload className='text-xl'/>
+    </span>
+  </div>
+      </Link>
+</div>
+                           </div>
 
+    </>				)})}
+         
+  
+          </div>
           </div>
      );
 };
