@@ -1,10 +1,10 @@
 import React from 'react';
 import NotFound from './NotFound';
-const Videos = () => {
+const SoundEffect = () => {
      return (
           <div>
                <NotFound/>
           </div>
      );
 };
-export default Videos;
+export default SoundEffect;

@@ -54,9 +54,9 @@ const ImageDetails = () => {
      return (
           <div>
 <section>
-  <div class="relative mx-auto w-full container px-2 py-8">
+  <div class="relative mx-auto w-full container px-2 py-5">
     <div>
-      <h1 class="text-2xl font-bold lg:text-3xl">{singlePhoto.category}</h1>
+      <h1 class="text-2xl font-bold lg:text-3xl mb-2 ">{singlePhoto.category}</h1>
 
     </div>
 
@@ -70,7 +70,7 @@ const ImageDetails = () => {
           <img
             alt="Tee"
             src={singlePhoto.photoLink}
-            class="h-72 w-full rounded-xl object-cover lg:h-[540px]   shadow-secondary shadow-md  border border-secondary "
+            class="h-72 w-full rounded-xl object-cover lg:h-[540px]    shadow-md  border border-gray-400 "
             /> 
             </div>
             </TransformComponent>
@@ -178,45 +178,34 @@ const ImageDetails = () => {
             <legend class="text-2xl font-bold">Keyworkds</legend>
 
             <div class="mt-2 flex gap-1">
-              <label for="material_cotton" class="cursor-pointer">
-                <input
-                  type="radio"
-                  id="material_cotton"
-                  name="material"
-                  class="peer sr-only"
-                  checked
-                />
-
                 <span
-                  class="block rounded-full border border-secondary px-3 py-1 text-xs peer-checked:bg-gray-100"
-                >
-                  Cotton
-                </span>
-              </label>
-
-              <label for="material_wool" class="cursor-pointer">
-                <input
-                  type="radio"
-                  id="material_wool"
-                  name="material"
-                  class="peer sr-only"
-                  checked
-                />
-
+                  class="block rounded-full border border-secondary px-3 py-1 text-xs bg-gray-700 text-white">
+                  Cotton </span>
                 <span
-                  class="block rounded-full border border-secondary px-3 py-1 text-xs peer-checked:bg-gray-100"
-                >
-                  Wool
-                </span>
-              </label>
+                  class="block rounded-full border border-secondary px-3 py-1 text-xs ">
+                  Wool </span>
+                <span
+                  class="block rounded-full border border-secondary px-3 py-1 text-xs ">
+                  Tree </span>
+              
             </div>
           </fieldset>
 
-          <div class="rounded border bg-gray-100 p-4">
-            <p class="">
-              <span class="block"> Please read our terms and condition. We provide  free image... </span>
 
-              <Link to="" class="mt-1 inline-block underline"> read more </Link>
+{/* Put this part before </body> tag */}
+<input type="checkbox" id="my-modal-3" className="modal-toggle" />
+<div className="modal ">
+  <div className="modal-box relative rounded-md">
+    <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <h3 className="text-lg font-bold">Congratulations random Internet user!</h3>
+    <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+  </div>
+</div>
+          <div class="rounded border  p-4">
+            <p class="">
+              <span class="block"> Free to use under the Pixabay license No attribution required </span>
+
+              <label htmlFor="my-modal-3" className='underline cursor-pointer'> License</label>
             </p>
           </div>
 
@@ -224,9 +213,9 @@ const ImageDetails = () => {
             <p class="text-2xl font-bold">Country: Bangladesh</p>
           </div>
           <button onClick={()=>dawnloadImage(singlePhoto.photoLink)}
-      class="flex justify-center items-center w-full btn p-2 rounded-md mt-3   tracking-wide uppercase   border border-secondary  bg-secondary text-white font-normal"
+      class="flex justify-center items-center w-full btn p-2 rounded-md mt-3   tracking-wide uppercase   border border-secondary  text-white font-normal bg-gray-700"
       >
-     <HiOutlineDownload className='mr-3 text-3xl font-bold'/>  <span className='text-xl'>Free Dawnload</span>
+     <HiOutlineDownload className='mr-3 text-3xl font-bold '/>  <span className='text-xl '>Free Dawnload</span>
     </button>
           
         </div>
@@ -236,7 +225,9 @@ const ImageDetails = () => {
     </div>
   </div>
 </section>
-<div className='grid grid-cols-1 lg:grid-cols-4 gap-4 '>
+<div className='  py-4'>
+<h1 class="text-xl font-bold ml-2 lg:ml-11   ">Related Images</h1>
+<div className='grid grid-cols-1 lg:grid-cols-4 gap-4 container lg:mx-auto px-2'>
                {newProducts.map((photo )=>{
 						return(
 						<>
@@ -250,7 +241,7 @@ const ImageDetails = () => {
     class=" lazyload blur-up w-full object-cover transition duration-500 group-hover:opacity-90 h-60 border border-secondary rounded-sm"
     />
   <div class="absolute inset-0 flex  items-end shadow-black justify-between p-6 z-20">
-    <h3 class="text-xl font-bold text-secondary w-full   ">Human</h3>
+    <h3 class="text-xl font-bold  w-full text-gray-700">{photo.category}</h3>
     <span onClick={()=>dawnloadImage(photo.photoLink)}
       class="inline-block p-2 rounded-md mt-3 text-xs  tracking-wide uppercase bg-gray-100 border border-secondary"
       >
@@ -265,7 +256,7 @@ const ImageDetails = () => {
          
   
           </div>
-          </div>
+          </div></div>
      );
 };
 export default ImageDetails;

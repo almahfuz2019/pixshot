@@ -32,21 +32,20 @@ const Photos = () => {
 	document.body.removeChild(link)
   }
      return (
-          <div className='grid grid-cols-1 lg:grid-cols-4 gap-4 '>
+          <div className='grid grid-cols-1 lg:grid-cols-4 gap-4 container mx-auto px-4 lg:px-0'>
                {photos.map((photo )=>{
 						return(
 						<>
-					
-                           <div className=''>
-                           <div class="relative block group ">
-                            <Link to={`/photo/${photo._id}`} className="cursor-pointer">
+                <div className=''>
+                <div class="relative block group ">
+                <Link to={`/photo/${photo._id}`} className="cursor-pointer">
   <img data-sizes="auto"
     data-src={photo.photoLink}
     alt=""
-    class=" lazyload blur-up w-full object-cover transition duration-500 group-hover:opacity-90 h-60 border border-secondary rounded-sm"
+    class=" lazyload blur-up w-full object-cover transition duration-500 group-hover:opacity-90 h-52  shadow-white border rounded"
     />
   <div class="absolute inset-0 flex  items-end shadow-black justify-between p-6 z-20">
-    <h3 class="text-xl font-bold text-secondary w-full   ">Human</h3>
+    <h3 class="text-xl font-bold  w-full  text-gray-700">{photo.category}</h3>
     <span onClick={()=>dawnloadImage(photo.photoLink)}
       class="inline-block p-2 rounded-md mt-3 text-xs  tracking-wide uppercase bg-gray-100 border border-secondary"
       >

@@ -6,13 +6,23 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+.logo{
+  font-family: 'Monoton', cursive;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.bg-img{
+  height: 500px ;
+}
+.active{
+  background-color: lightgrey;
+  font-weight: 700;
+  color: black;
+  padding: 0px 20px;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

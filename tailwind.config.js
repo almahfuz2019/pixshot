@@ -6,25 +6,33 @@ module.exports = {
   theme: {
     extend: {},
   },
-  daisyui: {
-    themes: [
-      {
-        light: {        
-"primary": "#F0681D",
-// "primary": "#785B4A",
-"secondary": "#2B35BC",
-"accent": "#FFEDD5",
-"neutral": "#F3F4F6",
-"base-100": "#ffffff",
-"info": "#98A8DD",
-"success": "#1BBB70",
-"warning": "#DF7E07",
-"error": "#FA5C5C",
+ 
+    daisyui: {
+      themes: [
+        {
+          mytheme: {
+          
+            "primary": "#4B6BFB",
+                     
+            "secondary": "#E6E6E6",
+                     
+            "accent": "#67CBA0",
+                     
+            "neutral": "#181A2A",
+                     
+            "base-100": "#FFFFFF",
+                     
+            "info": "#3ABFF8",
+                     
+            "success": "#36D399",
+                     
+            "warning": "#FBBD23",
+                     
+            "error": "#F87272",
+                     },
         },
-      },
-      {
-      },
-    ],
+      ],
+    
   },
   plugins: [require("daisyui")],
 }
